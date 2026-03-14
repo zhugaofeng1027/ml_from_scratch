@@ -6,17 +6,17 @@ class KNN:
         self.k = k
     
     def fit(self, X, y):
-        self.X, self.Y = X, y
+        self.X_train, self.y_train = X, y
 
     def predict(self, X_test):
         preds = []
         for x in X_test:
            dists = np.sqrt(np.sum((self.X_train - x) ** 2, axis=1))
            idx = np.argsort(dists)[:self.k]
-           k_labels = self.y_train[dists]
+           k_labels = self.y_train[idx]
            label = Counter(k_labels).most_common(1)[0][0]
            preds.append(label)
-        return np.array(label)
+        return np.array(preds)
     
 if __name__ == "__main__":
     X_train = np.array([[1, 2], [2, 3], [3, 4], [4, 5]])
@@ -27,4 +27,3 @@ if __name__ == "__main__":
     clf.fit(X_train, y_train)
     predictions = clf.predict(X_test)
     print("predictions:", predictions)
-        
