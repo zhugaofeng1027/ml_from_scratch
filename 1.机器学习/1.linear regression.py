@@ -1,10 +1,10 @@
 import numpy as np
 
-def compute_cost(X, y, theta):
-    m = len(y)
-    predictions = X.dot(theta)
-    cost = (1 / (2 * m)) * np.sum(np.square(predictions - y))
-    return cost
+# def compute_cost(X, y, theta):
+#     m = len(y)
+#     predictions = X.dot(theta)
+#     cost = (1 / (2 * m)) * np.sum(np.square(predictions - y))
+#     return cost
 
 def gradient_descent(X, y, theta, alpha, num_iters):
     m = len(y)
@@ -14,7 +14,7 @@ def gradient_descent(X, y, theta, alpha, num_iters):
         error = predictions - y
         gradient = (1 / m) * X.T.dot(error)
         theta = theta - alpha * gradient
-        J_history[i] = compute_cost(X, y, theta)
+        # J_history[i] = compute_cost(X, y, theta)
     return theta, J_history
 
 if __name__ == "__main__":
